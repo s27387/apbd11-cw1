@@ -1,55 +1,34 @@
 ﻿using System;
 
-class Calculator
+class FactorialCalculator
 {
     static void Main(string[] args)
     {
-        double num1, num2, result;
-        string operation;
+        int number;
+        long factorial = 1;
 
         // Display welcome message
-        Console.WriteLine("Welcome to the simple C# Calculator!");
+        Console.WriteLine("Welcome to the Factorial Calculator!");
 
-        // Get user input for numbers and operation
-        Console.Write("Enter the first number: ");
-        num1 = Convert.ToDouble(Console.ReadLine());
+        // Get user input for the number
+        Console.Write("Enter a number to calculate its factorial: ");
+        number = Convert.ToInt32(Console.ReadLine());
 
-        Console.Write("Enter the second number: ");
-        num2 = Convert.ToDouble(Console.ReadLine());
-
-        Console.WriteLine("Select an operation (+, -, *, /): ");
-        operation = Console.ReadLine();
-
-        // Perform the calculation based on the selected operation
-        switch (operation)
+        // Check if the number is negative
+        if (number < 0)
         {
-            case "+":
-                result = num1 + num2;
-                Console.WriteLine($"The result of {num1} + {num2} is {result}");
-                break;
-            case "-":
-                result = num1 - num2;
-                Console.WriteLine($"The result of {num1} - {num2} is {result}");
-                break;
-            case "*":
-                result = num1 * num2;
-                Console.WriteLine($"The result of {num1} * {num2} is {result}");
-                break;
-            case "/":
-                // Handle division by zero
-                if (num2 == 0)
-                {
-                    Console.WriteLine("Error: Division by zero is not allowed.");
-                }
-                else
-                {
-                    result = num1 / num2;
-                    Console.WriteLine($"The result of {num1} / {num2} is {result}");
-                }
-                break;
-            default:
-                Console.WriteLine("Invalid operation. Please select +, -, *, or /.");
-                break;
+            Console.WriteLine("Factorial is not defined for negative numbers.");
+        }
+        else
+        {
+            // Calculate the factorial
+            for (int i = 1; i <= number; i++)
+            {
+                factorial *= i;
+            }
+
+            // Display the result
+            Console.WriteLine($"The factorial of {number} is {factorial}");
         }
 
         // Wait for user input before closing
